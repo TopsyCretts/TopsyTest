@@ -1,5 +1,6 @@
 package org.top.test
 
+
 class Greeting {
     private val platform = getPlatform()
 

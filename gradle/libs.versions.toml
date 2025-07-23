@@ -1,8 +1,8 @@
 [versions]
-agp = "8.7.3"
-android-compileSdk = "35"
+agp = "8.11.1"
+android-compileSdk = "36"
 android-minSdk = "24"
-android-targetSdk = "35"
+android-targetSdk = "36"
 androidx-activity = "1.10.1"
 androidx-appcompat = "1.7.1"
 androidx-constraintlayout = "2.2.1"
@@ -13,6 +13,18 @@ androidx-testExt = "1.2.1"
 composeMultiplatform = "1.8.2"
 junit = "4.13.2"
 kotlin = "2.2.0"
+decompose = "3.3.0"
+kotlinStdlib = "2.2.0"
+runner = "1.5.2"
+core = "1.5.0"
+jetbrainsKotlinJvm = "2.2.0"
+coreKtx = "1.10.3"
+
+asset-delivery = "2.3.0"
+feature-delivery = "2.1.0"
+
+koin = "4.1.0"
+koin-compose = "4.1.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -26,6 +38,35 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+composeMultiplatform-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
+
+
+#Android
+android-play-asset-delivery = { group = "com.google.android.play", name = "asset-delivery", version.ref = "asset-delivery" }
+android-play-asset-delivery-ktx = { group = "com.google.android.play", name = "asset-delivery-ktx", version.ref = "asset-delivery" }
+
+android-play-feature-delivery = { group = "com.google.android.play", name = "feature-delivery", version.ref = "feature-delivery" }
+android-play-feature-delivery-ktx = { group = "com.google.android.play", name = "feature-delivery-ktx", version.ref = "feature-delivery" }
+
+#Decompose
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decomposeComposeExtension = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
+
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.9.0" }
+material-icons = { module = "org.jetbrains.compose.material:material-icons-extended", version = "1.7.3" }
+
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose" }
+
+[bundles]
+decompose = ["decompose", "decomposeComposeExtension"]
+android-play = ["android-play-asset-delivery", "android-play-asset-delivery-ktx",
+    "android-play-feature-delivery", "android-play-feature-delivery-ktx"]
+koin = ["koin-core", "koin-compose"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -33,3 +74,9 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+androidLint = { id = "com.android.lint", version.ref = "agp" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+androidDynamicFeature = { id = "com.android.dynamic-feature", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

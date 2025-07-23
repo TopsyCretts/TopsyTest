@@ -29,3 +29,12 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+
+include(":messengerDynamicFeature:api")
+project(":messengerDynamicFeature:api").projectDir = file("messengerDynamicFeature/api")
+
+include(":messengerDynamicFeature:messengerImpl")
+project(":messengerDynamicFeature:messengerImpl").projectDir = file("messengerDynamicFeature/messengerImpl")
+
+include(":messengerDynamicFeature:composeapi")
+project(":messengerDynamicFeature:composeapi").projectDir = file("messengerDynamicFeature/compose-api")

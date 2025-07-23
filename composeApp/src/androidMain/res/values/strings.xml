@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TopsyTest</string>
+    <string name="title_messengerimpl">Messenger</string>
 </resources>

@@ -5,3 +5,7 @@ PRODUCT_BUNDLE_IDENTIFIER=org.top.test.TopsyTest$(TEAM_ID)
 
 CURRENT_PROJECT_VERSION=1
 MARKETING_VERSION=1.0
+
+//Put your values, check: https://core.telegram.org/api/obtaining_api_id
+TDLIB_API_ID = 0
+TDLIB_API_HASH = yourHash

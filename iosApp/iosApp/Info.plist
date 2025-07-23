@@ -4,5 +4,9 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+    <key>TDLIB_API_ID</key>
+    <string>$(TDLIB_API_ID)</string>
+    <key>TDLIB_API_HASH</key>
+    <string>$(TDLIB_API_HASH)</string>
 </dict>
 </plist>

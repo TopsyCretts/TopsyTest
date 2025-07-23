@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -7,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -25,6 +25,9 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(project(":messengerDynamicFeature:messengerImpl"))
+            export(project(":messengerDynamicFeature:api"))
+            export(libs.bundles.decompose)
         }
     }
     
@@ -33,6 +36,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.bundles.android.play)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,9 +47,17 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            api(libs.bundles.decompose)
+            implementation(libs.kotlin.serialization)
+            implementation(libs.material.icons)
+            implementation(libs.bundles.koin)
+
+            implementation(project(":messengerDynamicFeature:api"))
+            implementation(project(":messengerDynamicFeature:composeapi"))
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+        iosMain.dependencies {
+            api(project(":messengerDynamicFeature:messengerImpl"))
         }
     }
 }
@@ -75,6 +87,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    dynamicFeatures.add(":messengerDynamicFeature:messengerImpl")
+
 }
 
 dependencies {
